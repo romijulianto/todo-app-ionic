@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AddNewTodoPage } from '../add-new-todo/add-new-todo.page';
 
 @Component({
   selector: 'app-home',
@@ -35,5 +37,14 @@ export class HomePage {
 
   today: number = Date.now();
 
-  constructor() {}
+  constructor(
+    public modalControl: ModalController
+  ) {}
+
+  async addTodo() {
+    const modal = await this.modalControl.create({
+      component: AddNewTodoPage
+    })
+    return await modal.present()
+  }
 }

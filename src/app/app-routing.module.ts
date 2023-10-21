@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'add-new-todo',
+    loadChildren: () => import('./add-new-todo/add-new-todo.module').then( m => m.AddNewTodoPageModule)
   },
+
 ];
 
 @NgModule({
