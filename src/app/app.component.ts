@@ -7,9 +7,5 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private storage: Storage) {}
-
-  async ngOnInit() {
-    await this.storage.create()
-  }
+  constructor() {}
 }
