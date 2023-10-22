@@ -8,43 +8,20 @@ import { AddNewTodoPage } from '../add-new-todo/add-new-todo.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  todoList = [
-    {
-      itemName: 'Coding',
-      itemDueDate: '10-23-23',
-      itemPriority: 'high',
-      itemCategory: 'Work',
-    },
-    {
-      itemName: 'Design',
-      itemDueDate: '10-23-23',
-      itemPriority: 'low',
-      itemCategory: 'Work',
-    },
-    {
-      itemName: 'Shopping',
-      itemDueDate: '10-25-23',
-      itemPriority: 'middle',
-      itemCategory: 'Personal',
-    },
-    {
-      itemName: 'Learning',
-      itemDueDate: '10-26-23',
-      itemPriority: 'middle',
-      itemCategory: 'Personal',
-    },
-  ];
+  todoList: any = []
 
   today: number = Date.now();
 
-  constructor(
-    public modalControl: ModalController
-  ) {}
+  constructor(public modalControl: ModalController) {}
 
   async addTodo() {
     const modal = await this.modalControl.create({
-      component: AddNewTodoPage
-    })
-    return await modal.present()
+      component: AddNewTodoPage,
+    });
+
+    modal.onDidDismiss().then((newTodoObject) => {
+      this.todoList.push(newTodoObject.data)
+    });
+    return await modal.present();
   }
 }

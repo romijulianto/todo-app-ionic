@@ -9,16 +9,32 @@ import { ModalController } from '@ionic/angular';
 export class AddNewTodoPage implements OnInit {
   categories = ['work', 'personal', 'home'];
 
-  taskName: any;
-  taskDate: any;
-  taskPriority: any;
-  taskCategory: any;
+  taskName!: string;
+  taskDate!: string;
+  taskPriority!: string;
+  taskCategory!: string;
+  taskObject: any = [];
 
   constructor(public modalControl: ModalController) {}
 
   ngOnInit() {}
 
   async dismis() {
-    await this.modalControl.dismiss();
+    await this.modalControl.dismiss(this.taskObject);
+  }
+
+  async selectedCategory(index: number) {
+    this.taskCategory = this.categories[index];
+  }
+
+  async addTodo() {
+    this.taskObject = {
+      itemName: this.taskName,
+      itemDueDate: this.taskDate,
+      itemPriority: this.taskPriority,
+      itemCategory: this.taskCategory,
+    };
+
+    this.dismis();
   }
 }

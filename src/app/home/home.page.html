@@ -25,7 +25,7 @@
     </ion-item>
 
     <ion-card-content>
-      <ion-label>Due {{ item.itemDueDate }}</ion-label>
+      <ion-label>Due {{ item.itemDueDate | date:'fullDate' }}</ion-label>
     </ion-card-content>
 
     <ion-row class="ion-margin-1 ion-justify-content-center">

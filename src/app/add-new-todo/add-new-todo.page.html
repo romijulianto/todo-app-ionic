@@ -11,7 +11,7 @@
       <ion-textarea [(ngModel)]="taskName" placeholder="Write your todo here"></ion-textarea>
     </ion-item>
     <ion-item>
-      <ion-select label="Priority" label-placement="floating" [(ngModel)]="taskCategory">
+      <ion-select label="Priority" label-placement="floating" [(ngModel)]="taskPriority">
         <ion-select-option value="low">Low</ion-select-option>
         <ion-select-option value="middle">Middle</ion-select-option>
         <ion-select-option value="high">High</ion-select-option>
@@ -33,14 +33,16 @@
     <ion-item>
       <ion-icon name="pricetag-outline" slot="start"></ion-icon>
       <ion-label>Category</ion-label>
-      <span [(ngModel)]="taskCategory">
-          <ion-chip *ngFor="let item of categories; let i = index">
-            <ion-label>{{ item }}</ion-label>
-          </ion-chip>
-      </span>
+      <span>{{ taskCategory }}</span>
+
+    </ion-item>
+    <ion-item>
+      <ion-chip *ngFor="let item of categories; let i = index" class="ion-justify-content-center" (click)="selectedCategory(i)">
+        <ion-label>{{ item }}</ion-label>
+      </ion-chip>
     </ion-item>
 
-    <ion-button class="ion-margin" expand="block">Create New</ion-button>
+    <ion-button class="ion-margin" expand="block" (click)="addTodo()">Create New</ion-button>
   </ion-card>
 
 </ion-content>
