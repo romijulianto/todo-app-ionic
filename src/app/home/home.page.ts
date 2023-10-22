@@ -24,4 +24,10 @@ export class HomePage {
     });
     return await modal.present();
   }
+
+  async delete(index: number) {
+    this.todoList.splice(index, 1)
+  }
+
+  
 }
